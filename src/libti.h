@@ -11,6 +11,7 @@ void assignAToVar(int*);
 	__asm rst 40 \
 	.dw __LABEL__ __endasm
 
+#include "string.c"
 #include "clib.c"
 #include "cio.c"
 

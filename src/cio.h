@@ -1,7 +1,7 @@
 #ifndef __CIO_H__
 #define __CIO_H__
 
-
+#include "string.h"
 #include "libti.c"
 
 #include "clib.c"

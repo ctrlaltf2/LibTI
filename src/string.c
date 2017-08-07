@@ -1,6 +1,8 @@
 #ifndef __CLIB_STRING_C__
 #define __CLIB_STRING_C__
 
+#include "string.h"
+
 int strlen(char s[]) {
 	#define i __clib__i
 
@@ -13,26 +15,34 @@ int strlen(char s[]) {
 }
 
 char * strcat(char * dest, const char *src) {
-    strcpy(dest + strlen(dest), src);
+    // Doesn't work at all
+    // Can piggyback on strcpy by calling strcpy(dest + strlen(dest), src)
+    char * p = dest;
+    
+    while(*p)
+        p++;
+    while((*p++ = *src++));
     return dest;
 }
 
 void strcpy(char* dest, char* source) {
-	int i = 0; //In this kind of function we want to avoid var reuse collision
+	/*int i = 0; //In this kind of function we want to avoid var reuse collision
 	while(1) {
 		dest[i] = source[i];
 		if(dest[i] == '\0')
 			break;
 		++i;
-	}
+	}*/
+    // Also needs testing (Should work though)
+    while((*dest++ = *source++));
+    return;
 }
 
 void strncpy(char* dest, char* source, int length) {
-	int i = 0; //In this kind of function we want to avoid var reuse collision
-	for(i = 0; i < length; ++i) {
-		dest[i] = source[i];
-	}
-	dest[i] = '\0';
+    // Needs testing
+	while(length --> 1) // XXX Off by one or not?
+		*dest++ = *source++;
+	*dest++ = '\0';
 }
 
 #endif
