@@ -6,10 +6,6 @@ int __clib__j;
 int __clib__returnval;
 char __clib__c;
 
-int strlen(char[]);
-void strcpy(char*, char*);
-void strcpyl(char*, char*, int);
-
 void reverse(char[]);
 
 int __clib__itoa_sign;
